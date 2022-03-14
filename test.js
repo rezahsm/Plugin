@@ -29,12 +29,12 @@ var baseInputs = [
     var startY = Math.min(Inputs.a.y, Inputs.b.y);
     var startZ = Math.min(Inputs.a.z, Inputs.b.z);
     var endX = Math.max(Inputs.a.x, Inputs.b.x);
-    var endY = Math.max(Inputs.a.y, Inputs.b.y);
+    var endY = Math.max(Inputs.a.y, Inputs.b.y); 
     var endZ = Math.max(Inputs.a.z, Inputs.b.z);
     //makeRoom(inputs.blockType,startX,startY,stastZ,endX,endY,endZ);
     for(let x = startX; x<= endX; x++)
-        for(let z = startZ; z<= endZ; z++)
-            await rxjs.firstValueFrom(UtopiaApi.placeBlock(blockType,x,0,z))
+        for(let y = startY; y<= endY; y++)
+            await rxjs.firstValueFrom(UtopiaApi.placeBlock(inputs.blockType,x,y,0))
     // for (let x = startX; x <= endX; x++) {
     //   for (let y = startY; y <= endY; y++) {
     //     for (let z = startZ; z <= endZ; z++) {
