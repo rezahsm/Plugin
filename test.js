@@ -18,7 +18,13 @@ var baseInputs = [
       required: true,
     },
   ];
-  
+  function makeRoom(blockType,startX,startY,stastZ,endX,endY,endZ){
+      for(let x = startX; x<= endX; x++)
+        for(let z = stastZ; z<= endZ; z++)
+            await rxjs.firstValueFrom(UtopiaApi.placeBlock(blockType,x,0,z))
+    
+
+  }
   async function main() {
     
     console.log("Running Cube Builder");
@@ -31,16 +37,17 @@ var baseInputs = [
     var endX = Math.max(Inputs.a.x, Inputs.b.x);
     var endY = Math.max(Inputs.a.y, Inputs.b.y);
     var endZ = Math.max(Inputs.a.z, Inputs.b.z);
-  
-    for (let x = startX; x <= endX; x++) {
-      for (let y = startY; y <= endY; y++) {
-        for (let z = startZ; z <= endZ; z++) {
-          if (
-            (x != endX || y != endY || z != endZ) &&
-            (x != startX || y != startY || z != startZ)
-          )
-          await rxjs.firstValueFrom(UtopiaApi.placeBlock(Inputs.blockType, x, y, z));
-        }
-      }
-    }
+    makeRoom(inputs.blockType,startX,startY,stastZ,endX,endY,endZ);
+
+    // for (let x = startX; x <= endX; x++) {
+    //   for (let y = startY; y <= endY; y++) {
+    //     for (let z = startZ; z <= endZ; z++) {
+    //       if (
+    //         (x != endX || y != endY || z != endZ) &&
+    //         (x != startX || y != startY || z != startZ)
+    //       )
+    //       await rxjs.firstValueFrom(UtopiaApi.placeBlock(Inputs.blockType, x, y, z));
+    //     }
+    //   }
+    // }
   }
