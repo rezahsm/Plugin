@@ -49,7 +49,7 @@ async function main() {
   for (let z = startZ; z <= endZ; z++)
     for (let x = startX; x <= endX; x++)
         await rxjs.firstValueFrom(UtopiaApi.placeBlock(Inputs.blockType, x, endY, z));
-
+  test("hello");
   // for (let x = startX; x <= endX; x++) {
   //   for (let y = startY; y <= endY; y++) {
   //     for (let z = startZ; z <= endZ; z++) {
@@ -61,4 +61,7 @@ async function main() {
   //     }
   //   }
   // }
+}
+function test(){
+  console.log("hello");
 }
