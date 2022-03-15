@@ -34,7 +34,7 @@ var baseInputs = [
     //makeRoom(inputs.blockType,startX,startY,stastZ,endX,endY,endZ);
     for(let x = startX; x<= endX; x++)
         for(let y = startY; y<= endY; y++)
-            await rxjs.firstValueFrom(UtopiaApi.placeBlock(Inputs.blockType,x,y,0))
+            await rxjs.firstValueFrom(UtopiaApi.placeBlock(Inputs.blockType,x,y,Inputs.zr))
     // for (let x = startX; x <= endX; x++) {
     //   for (let y = startY; y <= endY; y++) {
     //     for (let z = startZ; z <= endZ; z++) {
