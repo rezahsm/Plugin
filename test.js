@@ -62,6 +62,5 @@ async function main() {
   //   }
   // }
 }
-function test(){
-  console.log("hello");
-}
+
+
