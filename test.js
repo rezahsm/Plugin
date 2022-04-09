@@ -26,7 +26,7 @@ var baseInputs = [
 ];
 
 function make2DMatrix(flattenMatrix){
-  flattenMatrix = falttenMatrix.replaceAll(' ','');
+  flattenMatrix = flattenMatrix.replaceAll(' ','');
   var matrix2D = flattenMatrix.split(',');
   return matrix2D;
 }
