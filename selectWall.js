@@ -17,18 +17,18 @@ async function main() {
     var blockY = Inputs.blockPos.y;
     var blockZ = Inputs.blockPos.z;
     var blockPosition = [blockX,blockY,blockZ]; 
-    console.log(_.isEqual(blockPosition,blockPosition));
 }
+var block = []
 var selectedBlock = []
 function isBlockSelected(blockPos){
     for(let i=0;i<selectBlock.length;i++)
-        if(_.isEqual(selectBlock[i], blockPos))
+        if(JSON.stringify(selectBlock[i]) === JSON.stringify(blockPos))
             return true;
     return false;
 }
-function selectBlock(blockX,blockY,blockZ){
+function selectBlock(blockPos){
     
 }
-function selectWall(blockX,blockY,blockZ){
+function selectWall(blockPos){
     
 }

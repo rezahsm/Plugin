@@ -1,13 +1,19 @@
 var baseInputs = [
   {
-    label: "A",
-    name: "a",
-    type: "position",
+    label: "Base matrix",
+    name: "matrix",
+    type: "text",
     required: true,
   },
   {
-    label: "B",
-    name: "b",
+    label: "Hieght",
+    name: "hieght",
+    type: "text",
+    required: true,
+  },
+  {
+    label: "Start point",
+    name: "zero",
     type: "position",
     required: true,
   },
@@ -19,48 +25,29 @@ var baseInputs = [
   },
 ];
 
+function make2DMatrix(flattenMatrix){
+  flattenMatrix = falttenMatrix.replaceAll(' ','');
+  var matrix2D = flattenMatrix.split(',');
+  return matrix2D;
+}
+
+function makeMaze(matrix,hieght,zero,blockType){
+  var matrix2D = make2DMatrix(matrix);
+  for(let y = zero.y;y<zero.y+hieght;y++)
+    for(let x = zero.x;x<zero.x+matrix2D.length;x++)
+      for(let z = zero.z;z<zero.z+matrix2D[x - zero.x].length;z++)
+        await rxjs.firstValueFrom(UtopiaApi.placeBlock(blockType, x, y, z));
+}
+
 async function main() {
   console.log("Running Cube Builder");
 
   var Inputs = await rxjs.firstValueFrom(
     UtopiaApi.getInputsFromUser({ inputs: baseInputs })
   );
+  
+  makeMaze(Inputs.matrix,Inputs.hieght,Inputs.zero,Input.blockType)
 
-  var startX = Math.min(Inputs.a.x, Inputs.b.x);
-  var startY = Math.min(Inputs.a.y, Inputs.b.y);
-  var startZ = Math.min(Inputs.a.z, Inputs.b.z);
-  var endX = Math.max(Inputs.a.x, Inputs.b.x);
-  var endY = Math.max(Inputs.a.y, Inputs.b.y);
-  var endZ = Math.max(Inputs.a.z, Inputs.b.z);
-  //makeRoom(inputs.blockType,startX,startY,stastZ,endX,endY,endZ);
-  for (let x = startX; x <= endX; x++)
-    for (let y = startY; y <= endY; y++)
-      await rxjs.firstValueFrom(UtopiaApi.placeBlock(Inputs.blockType, x, y, startZ));
-  for (let x = startX; x <= endX; x++)
-    for (let y = startY; y <= endY; y++)
-      await rxjs.firstValueFrom(UtopiaApi.placeBlock(Inputs.blockType, x, y, endZ));
-  for (let z = startZ; z <= endZ; z++)
-    for (let y = startY; y <= endY; y++)
-      await rxjs.firstValueFrom(UtopiaApi.placeBlock(Inputs.blockType, startX, y, z));
-
-  for (let z = startZ; z <= endZ; z++)
-    for (let y = startY; y <= endY; y++)
-      await rxjs.firstValueFrom(UtopiaApi.placeBlock(Inputs.blockType, endX, y, z));
-  for (let z = startZ; z <= endZ; z++)
-    for (let x = startX; x <= endX; x++)
-        await rxjs.firstValueFrom(UtopiaApi.placeBlock(Inputs.blockType, x, endY, z));
-  test();
-  // for (let x = startX; x <= endX; x++) {
-  //   for (let y = startY; y <= endY; y++) {
-  //     for (let z = startZ; z <= endZ; z++) {
-  //       if (
-  //         (x != endX || y != endY || z != endZ) &&
-  //         (x != startX || y != startY || z != startZ)
-  //       )
-  //       await rxjs.firstValueFrom(UtopiaApi.placeBlock(Inputs.blockType, x, y, z));
-  //     }
-  //   }
-  // }
 }
 
 
