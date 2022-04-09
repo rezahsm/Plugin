@@ -42,7 +42,7 @@ async function makeMaze(matrix,hieght,zero,blockType){
 async function main() {
   console.log("Running Cube Builder");
   var Inputs = await rxjs.firstValueFrom(UtopiaApi.getInputsFromUser({inputs: baseInputs}));
-  makeMaze(Inputs.matrix,Inputs.hieght,Inputs.zero,Input.blockType)
+  makeMaze(Inputs.matrix,Inputs.hieght,Inputs.zero,Inputs.blockType)
 
 }
 
