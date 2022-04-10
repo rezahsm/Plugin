@@ -1,3 +1,5 @@
+// Base matrix : 1010,0101,1010
+
 var baseInputs = [
   {
     label: "Base matrix",
@@ -48,11 +50,13 @@ async function main() {
     for(let x = zero.x;x<zero.x+matrix2D.length;x++){
       console.log("mmm")
       for(let z = zero.z;z<zero.z+matrix2D[x - zero.x].length;z++){
-        await rxjs.firstValueFrom(UtopiaApi.placeBlock(blockType, x, y, z));
-        console.log("block")
-        console.log(x);
-        console.log(y);
-        console.log(z);
+        if(matrix2D[x][z] == "1"){
+          await rxjs.firstValueFrom(UtopiaApi.placeBlock(blockType, x, y, z));
+          console.log("block")
+          console.log(x);
+          console.log(y);
+          console.log(z);
+        }
       }
     }
   }
