@@ -32,30 +32,21 @@ function make2DMatrix(flattenMatrix){
 }
 
 async function makeMaze(matrix,hieght,zero,blockType){
-<<<<<<< HEAD
   console.log("yseee");
-  console.log(hieght)
+  console.log(hieght);
   var matrix2D = make2DMatrix(matrix);
   for(let y = zero.y;y<zero.y+hieght;y++){
     console.log("test")
     for(let x = zero.x;x<zero.x+matrix2D.length;x++){
       console.log("mmm")
-=======
-  var matrix2D = make2DMatrix(matrix);
-  for(let y = zero.y;y<zero.y+hieght;y++)
-    for(let x = zero.x;x<zero.x+matrix2D.length;x++)
->>>>>>> 12219db06decbddc8fc2b9d64bc047a05501b643
       for(let z = zero.z;z<zero.z+matrix2D[x - zero.x].length;z++){
         await rxjs.firstValueFrom(UtopiaApi.placeBlock(blockType, x, y, z));
         console.log(x);
         console.log(y);
         console.log(z);
       }
-<<<<<<< HEAD
   }
 }
-=======
->>>>>>> 12219db06decbddc8fc2b9d64bc047a05501b643
 }
 
 async function main() {
@@ -64,10 +55,4 @@ async function main() {
   makeMaze(Inputs.matrix,Inputs.hieght,Inputs.zero,Inputs.blockType)
   
 
-<<<<<<< HEAD
 }
-=======
-}
-
-
->>>>>>> 12219db06decbddc8fc2b9d64bc047a05501b643
