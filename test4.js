@@ -49,6 +49,7 @@ async function main() {
       console.log("mmm")
       for(let z = zero.z;z<zero.z+matrix2D[x - zero.x].length;z++){
         await rxjs.firstValueFrom(UtopiaApi.placeBlock(blockType, x, y, z));
+        console.log("block")
         console.log(x);
         console.log(y);
         console.log(z);
