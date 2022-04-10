@@ -31,12 +31,20 @@ function make2DMatrix(flattenMatrix){
   return matrix2D;
 }
 
-async function makeMaze(matrix,hieght,zero,blockType){
+
+
+async function main() {
+  console.log("Running Cube Builder");
+  var Inputs = await rxjs.firstValueFrom(UtopiaApi.getInputsFromUser({inputs: baseInputs}));
+  var matrix = Inputs.matrix;
+  var hieght = Inputs.hieght;
+  var zero = Inputs.zero;
+  var blockType = Inputs.blockType;
   console.log("yseee");
   console.log(hieght);
   var matrix2D = make2DMatrix(matrix);
   for(let y = zero.y;y<zero.y+hieght;y++){
-    console.log("test")
+    console.log(y)
     for(let x = zero.x;x<zero.x+matrix2D.length;x++){
       console.log("mmm")
       for(let z = zero.z;z<zero.z+matrix2D[x - zero.x].length;z++){
@@ -45,14 +53,8 @@ async function makeMaze(matrix,hieght,zero,blockType){
         console.log(y);
         console.log(z);
       }
+    }
   }
-}
-}
-
-async function main() {
-  console.log("Running Cube Builder");
-  var Inputs = await rxjs.firstValueFrom(UtopiaApi.getInputsFromUser({inputs: baseInputs}));
-  makeMaze(Inputs.matrix,Inputs.hieght,Inputs.zero,Inputs.blockType)
   
 
 }
